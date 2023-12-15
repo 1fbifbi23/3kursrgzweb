@@ -105,6 +105,11 @@ def register():
         errors.append("Пожалуйста заполните все поля")
         print(errors)
         return render_template('register.html', errors=errors)
+    if len(password) < 5:
+        errors.append("Пароль должен быть от 5 символов")
+        print(errors)
+        return render_template('register.html', errors=errors)
+    
     
     hashPassword = generate_password_hash(password)
 
@@ -169,8 +174,7 @@ def register3():
     description = request.form.get("description")
 
     if not description:
-        errors.append("Пожалуйста, введите описание о себе")
-        return render_template('register3.html', errors=errors)
+        description = 'Нет описания.'
 
     conn = dbConnect()
     cur = conn.cursor()
@@ -313,7 +317,7 @@ def profile_delete():
 
     conn = dbConnect()
     cur = conn.cursor()
-    
+
     cur.execute("DELETE FROM Profiles WHERE user_id = %s;", (user_id,))
         
     cur.execute("DELETE FROM users WHERE user_id = %s;", (user_id,))
