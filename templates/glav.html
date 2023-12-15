@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <section>
+        <div><form action="/rgz/profile"><button class="button_header" type="submit">Профиль</button></form></div>
+        <div><form action="/rgz/glav"><button class="button_header" type="submit">Знакомства</button></form></div>
+        <div><form action="/rgz/login"><button class="button_header" type="submit">Логин</button></form></div>
+        <div><form action="/rgz/register"><button class="button_header" type="submit">Регистрация</button></form></div>
+        <div><form action="/rgz/logout"><button class="button_header" type="submit">Выйти</button></form></div>
+    </section>
+{% endblock %}
+
+{% block main%}
+    <div>
+        <form action="{{ url_for('rgz.glav') }}" method="get">
+            <input type="text" name="search_name" placeholder="Имя">
+            <input type="text" name="search_age" placeholder="Возраст">
+            <button type="submit">Поиск</button>
+        </form>
+    </div>
+    <div class="container">
+        <h1>Поиск</h1>
+        {% if search_results %}
+            <ul class="search-results-list">
+            {% for result in search_results %}
+                <li class="search-result-item">
+                    <img src="{{ result[7] }}" alt="Profile photo of {{ result[2] }}">
+                    <h2>{{ result[2] }}</h2>
+                    <p>Возраст: {{ result[1] }}</p>
+                    <p>Пол: {{ result[3] }}</p>
+                    <p>Пол поиска: {{ result[4] }}</p>
+                    <p>Обо мне: <br> {{ result[5] }}</p>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p id="search_result">Никто не найден.</p>
+        {% endif %}
+
+        <div class="pagination">
+            {% if prev_url %}
+                <a href="{{ prev_url }}">Назад</a>
+            {% endif %}
+            {% if next_url %}
+                <a href="{{ next_url }}">Дальше</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

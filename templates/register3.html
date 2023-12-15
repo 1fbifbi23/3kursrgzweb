@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <section>
+        <div><form action="/rgz/profile"><button class="button_header" type="submit">Профиль</button></form></div>
+        <div><form action="/rgz/glav"><button class="button_header" type="submit">Знакомства</button></form></div>
+        <div><form action="/rgz/login"><button class="button_header" type="submit">Логин</button></form></div>
+        <div><form action="/rgz/register"><button class="button_header" type="submit">Регистрация</button></form></div>
+        <div><form action="/rgz/logout"><button class="button_header" type="submit">Выйти</button></form></div>
+    </section>
+{% endblock %}
+
+{% block main%}
+    <div class="logreg">
+        <h1>Опишите себя</h1>
+        <form method="post">
+            <div>
+                <label for="description">Описание о себе:</label><br>
+                <textarea id="description" name="description" rows="4" cols="50"></textarea>
+            </div>
+            <br>
+            <input type="submit" value="Сохранить">
+        </form>
+        {% if errors %}
+            <div style="color: red;">
+                <ul>
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        </form>
+    </div>
+{% endblock %}

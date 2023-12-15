@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <section>
+        <div><form action="/rgz/profile"><button class="button_header" type="submit">Профиль</button></form></div>
+        <div><form action="/rgz/glav"><button class="button_header" type="submit">Знакомства</button></form></div>
+        <div><form action="/rgz/login"><button class="button_header" type="submit">Логин</button></form></div>
+        <div><form action="/rgz/register"><button class="button_header" type="submit">Регистрация</button></form></div>
+        <div><form action="/rgz/logout"><button class="button_header" type="submit">Выйти</button></form></div>
+    </section>
+{% endblock %}
+
+{% block main%}
+    <div class="logreg">
+        <form method="post">
+            <h1>Авторизация</h1>
+            <div>
+                {% for error in errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+            <div class="input_label">
+                <input type="text" id="username" name="username" value="{{ username or '' }}" placeholder="Пользователь">
+                <label for="username">Пользователь</label>
+            </div>
+            <div class="input_label">
+                <input type="password" id="password" name="password" value="{{ password or '' }}" placeholder="Пароль">
+                <label for="password">Пароль</label>
+            </div>
+            <div>
+                <button type="submit" class="button_user">Войти</button>
+            </div>
+            </form>
+            <form action="/lab6/">
+                <button class="button_user" type="submit">Назад</button>
+            </form>
+    </div>
+{% endblock %}

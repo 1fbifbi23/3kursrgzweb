@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <section>
+        <div><form action="/rgz/profile"><button class="button_header" type="submit">Профиль</button></form></div>
+        <div><form action="/rgz/glav"><button class="button_header" type="submit">Знакомства</button></form></div>
+        <div><form action="/rgz/login"><button class="button_header" type="submit">Логин</button></form></div>
+        <div><form action="/rgz/register"><button class="button_header" type="submit">Регистрация</button></form></div>
+        <div><form action="/rgz/logout"><button class="button_header" type="submit">Выйти</button></form></div>
+    </section>
+{% endblock %}
+
+{% block main%}
+    <div class="main-page">
+        <div>
+            <div id="welcome">Добро пожаловать на наш сайт знакомств!</div>
+            <div class="main-page-content">
+                <div>Здесь вы найдете множество интересных людей, разных возрастов, интересов и национальностей, 
+                    готовых открыть свои сердца для новых знакомств. Наш сайт поможет вам узнать о них больше, общаться и найти взаимную симпатию.
+                </div>
+                <br>
+                <div>
+                    У нас вы можете создать свой профиль, загрузить свои фотографии и поделиться информацией о себе. 
+                    Это поможет другим пользователям увидеть вас таким, какой вы есть, и решить, что вы – именно тот человек, которого они ищут.
+                </div>
+            </div>
+            <div><form action="/rgz/register"><button class="button_header" id="main_register" type="submit">Регистрация</button></form></div>
+            
+        </div>
+    </div>
+{% endblock %}

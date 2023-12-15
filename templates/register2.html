@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <section>
+        <div><form action="/rgz/profile"><button class="button_header" type="submit">Профиль</button></form></div>
+        <div><form action="/rgz/glav"><button class="button_header" type="submit">Знакомства</button></form></div>
+        <div><form action="/rgz/login"><button class="button_header" type="submit">Логин</button></form></div>
+        <div><form action="/rgz/register"><button class="button_header" type="submit">Регистрация</button></form></div>
+        <div><form action="/rgz/logout"><button class="button_header" type="submit">Выйти</button></form></div>
+    </section>
+{% endblock %}
+
+{% block main%}
+    <div class="logreg">
+        <h2>Продолжение регистрации</h2>
+        <form method="POST">
+            {% if errors %}
+                <ul>
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="input_label">
+                <input type="text" name="name" placeholder="Имя">
+                <label for="username">Имя</label>
+            </div>
+            <label for="gender">Ваш пол:</label>
+            <select id="gender" name="gender">
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
+            </select>
+            <br>
+            <label for="partner_gender">Предпочитаемый пол партнера:</label>
+            <select id="partner_gender" name="partner_gender">
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
+                <option value="other">Любой</option>
+            </select>
+            <br>
+            <label for="age">Ваш возраст</label>
+                <input type="text" name="age" placeholder="Возраст">
+            </select>
+            <input type="submit" value="Далее">
+        </form>
+    </div>
+{% endblock %}

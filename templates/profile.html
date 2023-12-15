@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <section>
+        <div><form action="/rgz/profile"><button class="button_header" type="submit">Профиль</button></form></div>
+        <div><form action="/rgz/glav"><button class="button_header" type="submit">Знакомства</button></form></div>
+        <div><form action="/rgz/login"><button class="button_header" type="submit">Логин</button></form></div>
+        <div><form action="/rgz/register"><button class="button_header" type="submit">Регистрация</button></form></div>
+        <div><form action="/rgz/logout"><button class="button_header" type="submit">Выйти</button></form></div>
+    </section>
+{% endblock %}
+
+{% block main%}
+    <div class="profile">
+        <form method="post">
+            <div class="profile-content">
+                <h1>Твой профиль:</h1>
+                <div><img src="{{ photo_url }}" alt=""></div>
+                <div>Имя: {{ name }}</div>
+                <div>Возраст: {{ age }}</div>
+                <div>Пол: {{ gender }}</div>
+                <div>Пол который ты ищешь: {{ gender_search }}</div>
+                <div>Обо мне: {{ about_me }}</div>
+            </div>
+        </form>
+        <div><form action="/rgz/profile/change"><button class="button_user" type="submit">Редактировать профиль</button></form></div>
+        <div><form action="/rgz/profile/delete"><button class="button_user" type="submit">Удалить профиль</button></form></div>
+    </div>
+{% endblock %}
