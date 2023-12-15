@@ -22,8 +22,8 @@ CREATE TABLE Profiles (
 );
 select * from users;
 select * from Profiles;
-Drop table users;
-drop table profiles;
+--Drop table users;
+--drop table profiles;
 
 
 GRANT ALL ON TABLE public.users TO admin_rgz_larionov_base;;
